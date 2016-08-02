@@ -11,8 +11,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 //import java.net.HttpsURLConnection;
 import java.net.URL;
-
-
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class Greeting {
 
@@ -32,7 +33,7 @@ public class Greeting {
     // HTTP GET request
     private void sendGet() throws Exception {
 
-        String url = "http://api.masterdatanode.com/demo/greeting?LANGUAGE=TAMIL";
+        String url = "http://api.masterdatanode.com/demo/greeting?LANGUAGE=URDU";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -60,9 +61,18 @@ public class Greeting {
         in.close();
 
         //print result
-        System.out.println(response.toString());
+//        System.out.println(response.toString());
 
         JSONObject jsonObj = new JSONObject(response.toString());
+        JSONObject jsonArray = jsonObj.getJSONObject("greeting");
+//        System.out.println(jsonArray.keys().toString());
+        Iterator it = jsonArray.keys();
+        while (it.hasNext()) {
+            String pair = (String) it.next();
+            JSONObject jsonData = jsonArray.getJSONObject(pair);
+            System.out.println("Greeting in " + jsonData.get("LANGUAGE") + " : " + jsonData.get("TRANSLATION"));
+            it.remove(); // avoids a ConcurrentModificationException
+        }
 
     }
 
