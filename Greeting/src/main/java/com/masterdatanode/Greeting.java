@@ -33,7 +33,7 @@ public class Greeting {
     // HTTP GET request
     private void sendGet() throws Exception {
 
-        String url = "http://api.masterdatanode.com/demo/greeting?LANGUAGE=URDU";
+        String url = "http://api.masterdatanode.com/demo/greeting?LANGUAGE=ENGLISH";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
