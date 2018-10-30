@@ -33,7 +33,7 @@ public class Greeting {
     // HTTP GET request
     private void sendGet() throws Exception {
 
-        String url = "http://api.masterdatanode.com/demo/greeting?LANGUAGE=ENGLISH";
+        String url = "http://api.masterdatanode.com/demo/greeting/find?LANGUAGE=ENGLISH";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -43,7 +43,7 @@ public class Greeting {
 
         //add request header
         con.setRequestProperty("User-Agent", USER_AGENT);
-        con.setRequestProperty("access_token", "Zs0nTQB-ujOSV0KmEoPhBx2E6-Ab_GKO");
+        con.setRequestProperty("access_token", "#######access_token########");
         con.setRequestProperty("Content-Type", "application/json");
 
         int responseCode = con.getResponseCode();
@@ -78,8 +78,7 @@ public class Greeting {
 
     // HTTP POST request
     private void sendPost() throws Exception {
-
-        String url = "https://selfsolve.apple.com/wcResults.do";
+        String url = "http://api.masterdatanode.com/demo/greeting/find?LANGUAGE=ENGLISH";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -88,7 +87,7 @@ public class Greeting {
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-        String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
+        String urlParameters = "access_token=####access_token####&Content-Type=application/json";
 
         // Send post request
         con.setDoOutput(true);
